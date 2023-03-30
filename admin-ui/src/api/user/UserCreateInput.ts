@@ -1,5 +1,6 @@
 import { InputJsonValue } from "../../types";
 import { OrderCreateNestedManyWithoutUsersInput } from "./OrderCreateNestedManyWithoutUsersInput";
+import { CustomerWhereUniqueInput } from "../customer/CustomerWhereUniqueInput";
 
 export type UserCreateInput = {
   firstName?: string | null;
@@ -8,4 +9,5 @@ export type UserCreateInput = {
   password: string;
   roles: InputJsonValue;
   orders?: OrderCreateNestedManyWithoutUsersInput;
+  customer?: CustomerWhereUniqueInput | null;
 };

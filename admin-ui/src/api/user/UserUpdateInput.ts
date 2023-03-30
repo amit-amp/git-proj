@@ -1,5 +1,6 @@
 import { InputJsonValue } from "../../types";
 import { OrderUpdateManyWithoutUsersInput } from "./OrderUpdateManyWithoutUsersInput";
+import { CustomerWhereUniqueInput } from "../customer/CustomerWhereUniqueInput";
 
 export type UserUpdateInput = {
   firstName?: string | null;
@@ -8,4 +9,5 @@ export type UserUpdateInput = {
   password?: string;
   roles?: InputJsonValue;
   orders?: OrderUpdateManyWithoutUsersInput;
+  customer?: CustomerWhereUniqueInput | null;
 };

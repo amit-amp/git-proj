@@ -8,15 +8,17 @@ generator client {
 }
 
 model User {
-  id        String   @id @default(cuid())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  firstName String?
-  lastName  String?
-  username  String   @unique
-  password  String
-  roles     Json
-  orders    Order[]
+  id         String    @id @default(cuid())
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+  firstName  String?
+  lastName   String?
+  username   String    @unique
+  password   String
+  roles      Json
+  orders     Order[]
+  customer   Customer? @relation(fields: [customerId], references: [id])
+  customerId String?   @unique
 }
 
 model Order {
@@ -26,4 +28,12 @@ model Order {
   num       String?
   user      User?    @relation(fields: [userId], references: [id])
   userId    String?
+}
+
+model Customer {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  nickname  String?
+  user      User?
 }

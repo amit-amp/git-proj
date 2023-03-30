@@ -16,4 +16,14 @@ model User {
   username  String   @unique
   password  String
   roles     Json
+  orders    Order[]
+}
+
+model Order {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  num       String?
+  user      User?    @relation(fields: [userId], references: [id])
+  userId    String?
 }
